@@ -9,7 +9,7 @@ import android.widget.ListView;
 
 import project.caloriecalculator.R;
 
-public class ItemListFragment extends Fragment {
+public final class ItemListFragment extends Fragment {
 
     private static final String TAG = "ItemListFragment";
 

@@ -5,15 +5,19 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 import project.caloriecalculator.R;
 
 /**
  * The main activity of the app.
  */
-public class MainActivity extends AppCompatActivity {
+public final class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+
+    private ImageButton imageButton;
 
     @Override
     public void onCreate(Bundle savedInstance) {
@@ -27,7 +31,10 @@ public class MainActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayShowHomeEnabled(false);
             actionBar.setDisplayShowTitleEnabled(false);
-            actionBar.setCustomView(LayoutInflater.from(this).inflate(R.layout.action_bar, null));
+            RelativeLayout layout = (RelativeLayout)
+                    LayoutInflater.from(this).inflate(R.layout.action_bar, null);
+            imageButton = (ImageButton) layout.findViewById(R.id.add_button);
+            actionBar.setCustomView(layout);
             actionBar.setDisplayShowCustomEnabled(true);
         } else {
             if (Log.isLoggable(TAG, Log.ERROR)) {
