@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:gravity="center"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/item_name"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/item_height">
+    </TextView>
+
+    <EditText
+        android:id="@+id/count_field"
+        android:inputType="number"
+        android:gravity="center"
+        android:layout_height="@dimen/item_height"
+        android:layout_width="@dimen/text_field_width"
+        >
+    </EditText>
+
+    <TextView
+        android:id="@+id/unit_view"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/item_height">
+    </TextView>
+</LinearLayout>

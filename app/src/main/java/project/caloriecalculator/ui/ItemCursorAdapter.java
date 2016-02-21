@@ -13,14 +13,14 @@ import project.caloriecalculator.R;
 /**
  * Adapter for the list containing calorie items.
  */
-public final class ItemCusorAdapter extends CursorAdapter {
+public final class ItemCursorAdapter extends CursorAdapter {
 
     private LayoutInflater layoutInflater;
 
-    private static final String NAME_COLUMN = "name";
-    private static final String CALORIE_COLUMN = "calorie";
+    public static final String NAME_COLUMN = "name";
+    public static final String CALORIE_COLUMN = "calorie";
 
-    public ItemCusorAdapter(Context context, Cursor c, int flags) {
+    public ItemCursorAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 

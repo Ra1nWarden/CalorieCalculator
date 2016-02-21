@@ -7,31 +7,38 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import project.caloriecalculator.R;
 import project.caloriecalculator.data.DatabaseOpenHelper;
-import project.caloriecalculator.ui.ItemCusorAdapter;
+import project.caloriecalculator.ui.AddItemDialogFragment;
+import project.caloriecalculator.ui.ItemCursorAdapter;
 import project.caloriecalculator.ui.ItemListFragment;
 
 /**
  * An activity that allows the user to add items.
  */
-public final class AddItemActivity extends AppCompatActivity {
+public final class AddItemActivity extends AppCompatActivity implements
+        AddItemDialogFragment.OnAddItemListener,
+        AdapterView.OnItemClickListener {
 
-    private static String TAG = "AddItemActivity";
+    private static final String TAG = "AddItemActivity";
     private static final String RAW_QUERY = "SELECT * FROM ";
+    private static final String DIALOG_TAG = "AddItemDialog";
 
     private static final String FOOD_TABLE = "food";
     private static final String EXERCISE_TABLE = "exercise";
 
     static final String LIST_TYPE_KEY = "ListType";
 
-    private ItemCusorAdapter.ListType listType;
+    private ItemCursorAdapter.ListType listType;
     private ItemListFragment itemListFragment;
     private DatabaseOpenHelper databaseOpenHelper;
+    private ItemCursorAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstance) {
@@ -42,22 +49,26 @@ public final class AddItemActivity extends AppCompatActivity {
     }
 
     private void setUpList() {
-        listType = (ItemCusorAdapter.ListType) getIntent().getExtras().getSerializable
+        listType = (ItemCursorAdapter.ListType) getIntent().getExtras().getSerializable
                 (LIST_TYPE_KEY);
         itemListFragment = (ItemListFragment) getSupportFragmentManager().findFragmentById(R.id
                 .main_list);
         databaseOpenHelper = new DatabaseOpenHelper(this);
         Cursor cursor = null;
-        if (listType == ItemCusorAdapter.ListType.EXERCISE) {
+        if (listType == ItemCursorAdapter.ListType.EXERCISE) {
             cursor = databaseOpenHelper.getReadableDatabase().rawQuery(RAW_QUERY +
                     EXERCISE_TABLE, null);
-        } else if (listType == ItemCusorAdapter.ListType.FOOD) {
+        } else if (listType == ItemCursorAdapter.ListType.FOOD) {
             cursor = databaseOpenHelper.getReadableDatabase().rawQuery(RAW_QUERY + FOOD_TABLE,
                     null);
         }
         if (cursor != null) {
-            ItemCusorAdapter adapter = new ItemCusorAdapter(this, cursor, 0);
+            adapter = new ItemCursorAdapter(this, cursor, 0);
             itemListFragment.getListView().setAdapter(adapter);
+        } else {
+            if (Log.isLoggable(TAG, Log.ERROR)) {
+                Log.e(TAG, "Error in loading cursor!");
+            }
         }
     }
 
@@ -69,10 +80,10 @@ public final class AddItemActivity extends AppCompatActivity {
             RelativeLayout layout = (RelativeLayout)
                     LayoutInflater.from(this).inflate(R.layout.list_action_bar, null);
             TextView titleView = (TextView) layout.findViewById(R.id.list_title_text);
-            if (listType == ItemCusorAdapter.ListType.EXERCISE) {
+            if (listType == ItemCursorAdapter.ListType.EXERCISE) {
                 titleView.setText(AddItemActivity.this.getResources().getString(R.string
                         .exercise_list_title));
-            } else if (listType == ItemCusorAdapter.ListType.FOOD) {
+            } else if (listType == ItemCursorAdapter.ListType.FOOD) {
                 titleView.setText(AddItemActivity.this.getResources().getString(R.string
                         .food_list_title));
             }
@@ -90,5 +101,24 @@ public final class AddItemActivity extends AppCompatActivity {
                 Log.e(TAG, "Action bar is null at setUpActionBar()");
             }
         }
+    }
+
+    public ItemCursorAdapter.ListType getListType() {
+        return listType;
+    }
+
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        ListView parentList = (ListView) parent;
+        Cursor cursor = (Cursor) parentList.getAdapter().getItem(position);
+        AddItemDialogFragment dialog = AddItemDialogFragment.createDialogWithItem(cursor
+                .getString(cursor.getColumnIndex(ItemCursorAdapter.NAME_COLUMN)));
+        dialog.show(getSupportFragmentManager(), DIALOG_TAG);
+    }
+
+    @Override
+    public void add(int cnt, String itemName, ItemCursorAdapter.ListType itemType) {
+
     }
 }

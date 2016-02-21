@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import project.caloriecalculator.R;
-import project.caloriecalculator.ui.ItemCusorAdapter;
+import project.caloriecalculator.ui.ItemCursorAdapter;
 
 /**
  * The main activity of the app.
@@ -60,13 +60,14 @@ public final class MainActivity extends AppCompatActivity implements PopupMenu
         if (item.getItemId() == R.id.food) {
             Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
             Bundle args = new Bundle();
-            args.putSerializable(AddItemActivity.LIST_TYPE_KEY, ItemCusorAdapter.ListType.FOOD);
+            args.putSerializable(AddItemActivity.LIST_TYPE_KEY, ItemCursorAdapter.ListType.FOOD);
             intent.putExtras(args);
             startActivity(intent);
         } else if (item.getItemId() == R.id.exercise) {
             Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
             Bundle args = new Bundle();
-            args.putSerializable(AddItemActivity.LIST_TYPE_KEY, ItemCusorAdapter.ListType.EXERCISE);
+            args.putSerializable(AddItemActivity.LIST_TYPE_KEY, ItemCursorAdapter.ListType
+                    .EXERCISE);
             intent.putExtras(args);
             startActivity(intent);
         }
