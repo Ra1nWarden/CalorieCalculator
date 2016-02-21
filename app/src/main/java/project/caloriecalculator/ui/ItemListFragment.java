@@ -22,4 +22,8 @@ public final class ItemListFragment extends Fragment {
         listView = (ListView) view.findViewById(R.id.selected_list);
         return view;
     }
+
+    public ListView getListView() {
+        return listView;
+    }
 }

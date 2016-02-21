@@ -1,23 +1,27 @@
 package project.caloriecalculator.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.PopupMenu;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.widget.ImageButton;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.RelativeLayout;
 
 import project.caloriecalculator.R;
+import project.caloriecalculator.ui.ItemCusorAdapter;
 
 /**
  * The main activity of the app.
  */
-public final class MainActivity extends AppCompatActivity {
+public final class MainActivity extends AppCompatActivity implements PopupMenu
+        .OnMenuItemClickListener {
 
     private static final String TAG = "MainActivity";
-
-    private ImageButton imageButton;
 
     @Override
     public void onCreate(Bundle savedInstance) {
@@ -32,8 +36,7 @@ public final class MainActivity extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(false);
             actionBar.setDisplayShowTitleEnabled(false);
             RelativeLayout layout = (RelativeLayout)
-                    LayoutInflater.from(this).inflate(R.layout.action_bar, null);
-            imageButton = (ImageButton) layout.findViewById(R.id.add_button);
+                    LayoutInflater.from(this).inflate(R.layout.main_action_bar, null);
             actionBar.setCustomView(layout);
             actionBar.setDisplayShowCustomEnabled(true);
         } else {
@@ -43,5 +46,30 @@ public final class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void showPopUp(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.setOnMenuItemClickListener(this);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.add_menu, popup.getMenu());
+        popup.show();
+    }
 
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        if (item.getItemId() == R.id.food) {
+            Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
+            Bundle args = new Bundle();
+            args.putSerializable(AddItemActivity.LIST_TYPE_KEY, ItemCusorAdapter.ListType.FOOD);
+            intent.putExtras(args);
+            startActivity(intent);
+        } else if (item.getItemId() == R.id.exercise) {
+            Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
+            Bundle args = new Bundle();
+            args.putSerializable(AddItemActivity.LIST_TYPE_KEY, ItemCusorAdapter.ListType.EXERCISE);
+            intent.putExtras(args);
+            startActivity(intent);
+        }
+        return true;
+    }
 }
