@@ -19,6 +19,9 @@
         <activity
             android:name=".activities.AddItemActivity">
         </activity>
+        <activity
+            android:name=".activities.RecommendActivity">
+        </activity>
 
     </application>
 

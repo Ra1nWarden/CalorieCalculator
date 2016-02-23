@@ -3,11 +3,14 @@
     <string name="home_title">Calorie Calculator</string>
     <string name="food_list_title">Add food</string>
     <string name="exercise_list_title">Add exercise</string>
+    <string name="recommend_food_list_title">Recommended food</string>
+    <string name="recommend_exercise_list_title">Recommended exercise</string>
     <string name="food">Food</string>
     <string name="exercise">Exercise</string>
     <string name="done">Done</string>
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>
     <string name="food_unit"> * 100 g</string>
-    <string name="exercise_unit"> * 10 min</string>
+    <string name="exercise_unit"> * 60 min</string>
+    <string name="recommend">Recommend</string>
 </resources>

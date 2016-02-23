@@ -8,8 +8,10 @@
         android:id="@+id/title_text"
         android:textColor="@color/TitleColor"
         android:text="@string/home_title"
+        android:textSize="@dimen/title_text_size"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_centerVertical="true"
         android:layout_centerInParent="true">
     </TextView>
 
@@ -20,6 +22,7 @@
         android:background="@android:color/transparent"
         android:src="@mipmap/ic_add_white_24dp"
         android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         android:onClick="showPopUp">
     </ImageButton>
 

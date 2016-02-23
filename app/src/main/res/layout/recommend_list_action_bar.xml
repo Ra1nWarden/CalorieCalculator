@@ -5,10 +5,12 @@
                 android:backgroundTint="@color/colorPrimary">
 
     <TextView
-        android:id="@+id/list_title_text"
+        android:id="@+id/recommend_list_title_text"
         android:textColor="@color/TitleColor"
+        android:textSize="@dimen/title_text_size"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_centerVertical="true"
         android:layout_centerInParent="true">
     </TextView>
 
@@ -19,8 +21,7 @@
         android:background="@android:color/transparent"
         android:text="@string/done"
         android:textColor="@android:color/white"
-        android:layout_alignParentRight="true"
-        android:onClick="done">
-    </Button>
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"/>
 
 </RelativeLayout>

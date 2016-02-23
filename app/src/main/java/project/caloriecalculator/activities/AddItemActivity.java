@@ -1,5 +1,6 @@
 package project.caloriecalculator.activities;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -16,7 +17,7 @@ import android.widget.TextView;
 import project.caloriecalculator.R;
 import project.caloriecalculator.data.DatabaseOpenHelper;
 import project.caloriecalculator.ui.AddItemDialogFragment;
-import project.caloriecalculator.ui.ItemCursorAdapter;
+import project.caloriecalculator.data.ItemCursorAdapter;
 import project.caloriecalculator.ui.ItemListFragment;
 
 /**
@@ -78,7 +79,7 @@ public final class AddItemActivity extends AppCompatActivity implements
             actionBar.setDisplayShowHomeEnabled(false);
             actionBar.setDisplayShowTitleEnabled(false);
             RelativeLayout layout = (RelativeLayout)
-                    LayoutInflater.from(this).inflate(R.layout.list_action_bar, null);
+                    LayoutInflater.from(this).inflate(R.layout.add_list_action_bar, null);
             TextView titleView = (TextView) layout.findViewById(R.id.list_title_text);
             if (listType == ItemCursorAdapter.ListType.EXERCISE) {
                 titleView.setText(AddItemActivity.this.getResources().getString(R.string
@@ -87,6 +88,18 @@ public final class AddItemActivity extends AppCompatActivity implements
                 titleView.setText(AddItemActivity.this.getResources().getString(R.string
                         .food_list_title));
             }
+            Button recommendBtn = (Button) layout.findViewById(R.id.recommend_button);
+            recommendBtn.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Bundle args = new Bundle();
+                    args.putSerializable(RecommendActivity.LIST_TYPE_KEY, listType);
+                    Intent intent = new Intent(AddItemActivity.this, RecommendActivity.class);
+                    intent.putExtras(args);
+                    startActivity(intent);
+                }
+            });
             Button btn = (Button) layout.findViewById(R.id.done_button);
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override

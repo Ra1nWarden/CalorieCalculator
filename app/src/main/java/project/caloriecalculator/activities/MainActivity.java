@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import project.caloriecalculator.R;
-import project.caloriecalculator.ui.ItemCursorAdapter;
+import project.caloriecalculator.data.ItemCursorAdapter;
 
 /**
  * The main activity of the app.

@@ -11,10 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import project.caloriecalculator.R;
 import project.caloriecalculator.activities.AddItemActivity;
+import project.caloriecalculator.data.ItemCursorAdapter;
 
 /**
  * A fragment that allows the user to add a specific item.
