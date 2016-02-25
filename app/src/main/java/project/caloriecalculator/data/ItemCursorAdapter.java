@@ -41,7 +41,7 @@ public final class ItemCursorAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         ViewHolder viewHolder = (ViewHolder) view.getTag();
-        viewHolder.calorieText.setText(cursor.getString(viewHolder.calorieIndex));
+        viewHolder.calorieText.setText(cursor.getString(viewHolder.calorieIndex) + " kj");
         viewHolder.titleText.setText(cursor.getString(viewHolder.titleIndex));
     }
 

@@ -48,13 +48,21 @@ public final class RecommendActivity extends AppCompatActivity {
         if (listType == ItemCursorAdapter.ListType.EXERCISE) {
             cursor = databaseOpenHelper.getReadableDatabase().rawQuery(RAW_QUERY +
                     RECOMMENDED_EXERCISE_TABLE, null);
+            recommendItemListFragment.getTitleView().setText(getResources().getString(R.string
+                    .exercise_title));
+            recommendItemListFragment.getCountView().setText(getResources().getString(R.string
+                    .exercise_recommend));
         } else if (listType == ItemCursorAdapter.ListType.FOOD) {
             cursor = databaseOpenHelper.getReadableDatabase().rawQuery(RAW_QUERY +
                     RECOMMENDED_FOOD_TABLE, null);
+            recommendItemListFragment.getTitleView().setText(getResources().getString(R.string
+                    .food_title));
+            recommendItemListFragment.getCountView().setText(getResources().getString(R.string.food_recommend));
         }
         if (cursor != null) {
             RecommendItemCursorAdapter adapter = new RecommendItemCursorAdapter(this, cursor, 0);
             recommendItemListFragment.getListView().setAdapter(adapter);
+            recommendItemListFragment.getTitleView().setClickable(false);
         } else {
             if (Log.isLoggable(TAG, Log.ERROR)) {
                 Log.e(TAG, "Error in loading cursor!");

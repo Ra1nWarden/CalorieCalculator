@@ -52,6 +52,7 @@ public final class AddItemActivity extends AppCompatActivity implements
     private void setUpList() {
         listType = (ItemCursorAdapter.ListType) getIntent().getExtras().getSerializable
                 (LIST_TYPE_KEY);
+
         itemListFragment = (ItemListFragment) getSupportFragmentManager().findFragmentById(R.id
                 .main_list);
         databaseOpenHelper = new DatabaseOpenHelper(this);
@@ -59,9 +60,15 @@ public final class AddItemActivity extends AppCompatActivity implements
         if (listType == ItemCursorAdapter.ListType.EXERCISE) {
             cursor = databaseOpenHelper.getReadableDatabase().rawQuery(RAW_QUERY +
                     EXERCISE_TABLE, null);
+            itemListFragment.getTitleView().setText(getResources().getString(R.string
+                    .exercise_title));
+            itemListFragment.getCountView().setText(getResources().getString(R.string
+                    .exercise_count));
         } else if (listType == ItemCursorAdapter.ListType.FOOD) {
             cursor = databaseOpenHelper.getReadableDatabase().rawQuery(RAW_QUERY + FOOD_TABLE,
                     null);
+            itemListFragment.getTitleView().setText(getResources().getString(R.string.food_title));
+            itemListFragment.getCountView().setText(getResources().getString(R.string.food_count));
         }
         if (cursor != null) {
             adapter = new ItemCursorAdapter(this, cursor, 0);

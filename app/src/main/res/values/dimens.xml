@@ -8,4 +8,5 @@
     <dimen name="action_bar_button_width_wide">100dp</dimen>
     <dimen name="text_field_width">100dp</dimen>
     <dimen name="title_text_size">25dp</dimen>
+    <dimen name="header_height">30dp</dimen>
 </resources>

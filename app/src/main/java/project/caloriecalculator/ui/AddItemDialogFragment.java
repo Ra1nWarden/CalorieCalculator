@@ -43,7 +43,7 @@ public final class AddItemDialogFragment extends DialogFragment {
         context = getActivity();
         itemName = getArguments().getString(ITEM_NAME_KEY);
         dialogView = getActivity().getLayoutInflater().inflate(R.layout.add_item_dialog, null);
-        builder.setTitle(context.getResources().getString(R.string.add) + itemName)
+        builder.setTitle(context.getResources().getString(R.string.add) + " " + itemName)
                 .setView(dialogView)
                 .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

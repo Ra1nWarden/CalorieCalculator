@@ -13,4 +13,10 @@
     <string name="food_unit"> * 100 g</string>
     <string name="exercise_unit"> * 60 min</string>
     <string name="recommend">Recommend</string>
+    <string name="food_title">Food Name</string>
+    <string name="food_count">per 100 g</string>
+    <string name="food_recommend">gram</string>
+    <string name="exercise_title">Exercise Name</string>
+    <string name="exercise_count">per 60 min</string>
+    <string name="exercise_recommend">minute</string>
 </resources>
