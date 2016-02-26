@@ -4,6 +4,19 @@
                 android:layout_height="@dimen/action_bar_height"
                 android:backgroundTint="@color/colorPrimary">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/clear_all_button"
+        android:text="@string/clear"
+        android:textColor="@color/TitleColor"
+        android:background="@android:color/transparent"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="false"
+        android:textAlignment="viewStart"
+        android:onClick="clearAll"/>
+
     <TextView
         android:id="@+id/title_text"
         android:textColor="@color/TitleColor"

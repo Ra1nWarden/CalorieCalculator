@@ -22,6 +22,7 @@
         android:text="@string/done"
         android:textColor="@android:color/white"
         android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:textAlignment="viewEnd"/>
 
 </RelativeLayout>

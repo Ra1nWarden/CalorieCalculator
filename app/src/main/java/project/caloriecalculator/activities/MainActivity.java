@@ -1,9 +1,11 @@
 package project.caloriecalculator.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.util.Log;
@@ -91,6 +93,22 @@ public final class MainActivity extends AppCompatActivity implements PopupMenu
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.add_menu, popup.getMenu());
         popup.show();
+    }
+
+    public void clearAll(View view) {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.clear_all)
+                .setMessage(R.string.question)
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        databaseOpenHelper.getWritableDatabase().delete("record", null, null);
+                        setUpList();
+                        updateNumber();
+                    }
+                })
+                .setNegativeButton(R.string.cancel, null)
+                .show();
     }
 
 

@@ -22,4 +22,8 @@
     <string name="total_calorie">Total Calories:</string>
     <string name="main_list_title">Item</string>
     <string name="main_list_count">Calorie delta (kj)</string>
+    <string name="clear">Clear</string>
+    <string name="clear_all">Clear All</string>
+    <string name="question">Are you sure?</string>
+    <string name="yes">Yes</string>
 </resources>
