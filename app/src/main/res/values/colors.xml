@@ -6,4 +6,6 @@
     <color name="TitleColor">#FFFFFF</color>
     <color name="HeaderBackground">#A0A0A0</color>
     <color name="HeaderText">#FFFFFF</color>
+    <color name="HomeHeaderBackground">#FFB266</color>
+    <color name="HomeCalorieCounter">#80FF00</color>
 </resources>

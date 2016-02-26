@@ -22,15 +22,18 @@ public final class AddItemDialogFragment extends DialogFragment {
 
     private static final String TAG = "AddItemDialogFragment";
     private static final String ITEM_NAME_KEY = "ItemName";
+    private static final String UNIT_COUNT_KEY = "UnitCount";
     private ItemCursorAdapter.ListType itemType;
     private Context context;
     private OnAddItemListener addItemListener;
     private String itemName;
+    private int unitCount;
     private View dialogView;
 
-    public static AddItemDialogFragment createDialogWithItem(String itemName) {
+    public static AddItemDialogFragment createDialogWithItem(String itemName, int unit) {
         Bundle args = new Bundle();
         args.putString(ITEM_NAME_KEY, itemName);
+        args.putInt(UNIT_COUNT_KEY, unit);
         AddItemDialogFragment f = new AddItemDialogFragment();
         f.setArguments(args);
         return f;
@@ -52,7 +55,13 @@ public final class AddItemDialogFragment extends DialogFragment {
                                     .count_field)).getText().toString();
                             int cnt = Integer.parseInt(cntString);
                             if (cnt > 0) {
-                                addItemListener.add(cnt, itemName, itemType);
+                                if (itemType == ItemCursorAdapter.ListType.FOOD) {
+                                    addItemListener.add(cnt * getArguments().getInt
+                                            (UNIT_COUNT_KEY), itemName);
+                                } else if (itemType == ItemCursorAdapter.ListType.EXERCISE) {
+                                    addItemListener.add(-cnt * getArguments().getInt
+                                            (UNIT_COUNT_KEY), itemName);
+                                }
                             }
                         }
                     }
@@ -89,7 +98,7 @@ public final class AddItemDialogFragment extends DialogFragment {
     }
 
     public interface OnAddItemListener {
-        void add(int cnt, String itemName, ItemCursorAdapter.ListType itemType);
+        void add(int cnt, String itemName);
     }
 
 }

@@ -1,7 +1,9 @@
 package project.caloriecalculator.activities;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +35,10 @@ public final class AddItemActivity extends AppCompatActivity implements
 
     private static final String FOOD_TABLE = "food";
     private static final String EXERCISE_TABLE = "exercise";
+    private static final String RECORD_TABLE = "record";
+
+    private static final String RECORD_NAME_COLUMN = "item_name";
+    private static final String RECORD_CNT_COLUMN = "item_cnt";
 
     static final String LIST_TYPE_KEY = "ListType";
 
@@ -133,12 +139,17 @@ public final class AddItemActivity extends AppCompatActivity implements
         ListView parentList = (ListView) parent;
         Cursor cursor = (Cursor) parentList.getAdapter().getItem(position);
         AddItemDialogFragment dialog = AddItemDialogFragment.createDialogWithItem(cursor
-                .getString(cursor.getColumnIndex(ItemCursorAdapter.NAME_COLUMN)));
+                .getString(cursor.getColumnIndex(ItemCursorAdapter.NAME_COLUMN)), cursor.getInt
+                (cursor.getColumnIndex(ItemCursorAdapter.CALORIE_COLUMN)));
         dialog.show(getSupportFragmentManager(), DIALOG_TAG);
     }
 
     @Override
-    public void add(int cnt, String itemName, ItemCursorAdapter.ListType itemType) {
-
+    public void add(int cnt, String itemName) {
+        SQLiteDatabase database = databaseOpenHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(RECORD_NAME_COLUMN, itemName);
+        values.put(RECORD_CNT_COLUMN, cnt);
+        database.insert(RECORD_TABLE, null, values);
     }
 }

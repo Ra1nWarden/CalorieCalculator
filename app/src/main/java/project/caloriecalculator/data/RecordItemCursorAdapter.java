@@ -11,16 +11,18 @@ import android.widget.TextView;
 import project.caloriecalculator.R;
 
 /**
- * An adapter for recommended list
+ * An adapter for record table.
  */
-public final class RecommendItemCursorAdapter extends CursorAdapter {
+public final class RecordItemCursorAdapter extends CursorAdapter {
+
+    public static final String RECORD_TABLE = "record";
+
+    private static final String NAME_COLUMN = "item_name";
+    private static final String CALORIE_COLUMN = "item_cnt";
 
     private LayoutInflater layoutInflater;
 
-    public static final String NAME_COLUMN = "name";
-    public static final String AMOUNT_COLUMN = "amount";
-
-    public RecommendItemCursorAdapter(Context context, Cursor c, int flags) {
+    public RecordItemCursorAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -32,7 +34,7 @@ public final class RecommendItemCursorAdapter extends CursorAdapter {
         holder.titleText = (TextView) view.findViewById(R.id.name);
         holder.amountText = (TextView) view.findViewById(R.id.calorie);
         holder.titleIndex = cursor.getColumnIndexOrThrow(NAME_COLUMN);
-        holder.amountIndex = cursor.getColumnIndexOrThrow(AMOUNT_COLUMN);
+        holder.amountIndex = cursor.getColumnIndexOrThrow(CALORIE_COLUMN);
         view.setTag(holder);
         return view;
     }

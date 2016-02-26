@@ -19,4 +19,7 @@
     <string name="exercise_title">Exercise Name</string>
     <string name="exercise_count">per 60 min</string>
     <string name="exercise_recommend">minute</string>
+    <string name="total_calorie">Total Calories:</string>
+    <string name="main_list_title">Item</string>
+    <string name="main_list_count">Calorie delta (kj)</string>
 </resources>

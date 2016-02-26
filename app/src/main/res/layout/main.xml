@@ -4,8 +4,35 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_header"
+        android:padding="@dimen/main_header_padding"
+        android:background="@color/HomeHeaderBackground">
+
+        <TextView
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total_calorie"
+            android:textColor="@color/TitleColor"
+            android:textSize="@dimen/header_text_size"/>
+
+        <TextView
+            android:id="@+id/counter_field"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/HomeCalorieCounter"
+            android:textSize="@dimen/header_text_size"/>
+    </RelativeLayout>
+
     <fragment
         android:name="project.caloriecalculator.ui.ItemListFragment"
+        android:id="@+id/main_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </fragment>
