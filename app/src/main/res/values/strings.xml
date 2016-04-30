@@ -11,13 +11,13 @@
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>
     <string name="food_unit"> * 100 g</string>
-    <string name="exercise_unit"> * 60 min</string>
+    <string name="exercise_unit"> * 30 min</string>
     <string name="recommend">Recommend</string>
     <string name="food_title">Food Name</string>
     <string name="food_count">per 100 g</string>
     <string name="food_recommend">gram</string>
     <string name="exercise_title">Exercise Name</string>
-    <string name="exercise_count">per 60 min</string>
+    <string name="exercise_count">per 30 min</string>
     <string name="exercise_recommend">minute</string>
     <string name="total_calorie">Total Calories:</string>
     <string name="main_list_title">Item</string>
@@ -26,4 +26,7 @@
     <string name="clear_all">Clear All</string>
     <string name="question">Are you sure?</string>
     <string name="yes">Yes</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Log in</string>
 </resources>

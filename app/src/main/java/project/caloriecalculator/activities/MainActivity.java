@@ -28,6 +28,7 @@ import project.caloriecalculator.data.DatabaseOpenHelper;
 import project.caloriecalculator.data.ItemCursorAdapter;
 import project.caloriecalculator.data.RecordItemCursorAdapter;
 import project.caloriecalculator.ui.ItemListFragment;
+import project.caloriecalculator.ui.UserLoginDialogFragment;
 
 /**
  * The main activity of the app.
@@ -56,6 +57,8 @@ public final class MainActivity extends AppCompatActivity implements PopupMenu
     @Override
     public void onResume() {
         super.onResume();
+        UserLoginDialogFragment fragment = new UserLoginDialogFragment();
+        fragment.show(getSupportFragmentManager(), UserLoginDialogFragment.TAG);
         setUpList();
         updateNumber();
     }
